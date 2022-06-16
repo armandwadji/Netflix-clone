@@ -1,3 +1,12 @@
+
+
+
+$white_color: #fff;
+$black_color: #000;
+$footer: grey;
+
+
+
 body {
     margin: 0;
     font-family:'Roboto', 'Oxygen',
@@ -5,7 +14,7 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: rgba(17, 17, 17, 0.742);
+    background-color: $black_color;
   }
   
   :is(*, ::before, ::after){
@@ -15,11 +24,23 @@ body {
     outline: none;
   }
 
-  $white_color: #fff;
-  $black_color: #000;
+ 
 
 
   button{
     background: none;
     border: none;
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  li{
+    list-style: none;
+  }
+
+  .test{
+    width: 100%;
+    height: 50vh;
   }
