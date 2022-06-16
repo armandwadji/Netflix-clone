@@ -24,12 +24,19 @@ body {
     outline: none;
   }
 
- 
+ :is(h1, p){
+  margin-bottom: 1rem;
+  @media screen and (min-width:768px) {
+    margin-bottom: 1.5rem;
+
+  }
+ }
 
 
   button{
     background: none;
     border: none;
+    cursor: pointer;
   }
 
   a{
@@ -38,9 +45,4 @@ body {
 
   li{
     list-style: none;
-  }
-
-  .test{
-    width: 100%;
-    height: 50vh;
   }
