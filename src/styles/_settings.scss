@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    font-family:'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: rgba(17, 17, 17, 0.742);
+  }
+  
+  :is(*, ::before, ::after){
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+  }
+
+  $white_color: #fff;
+  $black_color: #000;
+
+
+  button{
+    background: none;
+    border: none;
+  }
