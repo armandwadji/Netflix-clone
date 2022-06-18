@@ -23,13 +23,17 @@ const Row = ({ title, fetchUrl, isPoster }) => {
         {movies.map((movie) => (
           <div
             key={movie.id}
-            className={Math.random() > 0.5 ? "row__images--image" : ""}>
-            <img
-              src={`https://image.tmdb.org/t/p/original/${
-                isPoster ? movie?.poster_path : movie?.backdrop_path
-              }`}
-              alt={movie?.title || movie?.original_title || movie?.name}
-            />
+            style={{ position: "relative" }}
+            className='description'>
+            <div className={Math.random() > 0.5 ? "row__images--image" : ""}>
+              <img
+                src={`https://image.tmdb.org/t/p/original/${
+                  isPoster ? movie?.poster_path : movie?.backdrop_path
+                }`}
+                alt={movie?.title || movie?.original_title || movie?.name}
+              />
+            </div>
+            {/* <div className='row__images--description'>{movie.overview}</div> */}
           </div>
         ))}
       </div>
