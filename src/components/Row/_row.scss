@@ -16,22 +16,22 @@
         width: 100%;
         padding: 0.5rem 0;
 
+        img{
+                
+            width: 300px;
+            padding: 0.5rem;
+            margin: 0 0.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+
+            &:hover{
+                cursor: pointer;
+                transform: scale(1.1);
+            }
+        }
+
         &--image{
             position: relative;
-
-            img{
-                
-                width: 300px;
-                padding: 0.5rem;
-                margin: 0 0.5rem;
-                border-radius: 10px;
-                transition: transform 0.3s ease-in-out;
-    
-                &:hover{
-                    cursor: pointer;
-                    transform: scale(1.1);
-                }
-            }
 
             &::before{
                 content: " ";
@@ -55,7 +55,6 @@
             &:hover{
 
                 &::before{
-
                     opacity: 0;
                 }
             }
@@ -75,11 +74,12 @@
     ::-webkit-scrollbar-thumb{
         background-clip: padding-box;
         background-color: darken($color: $footer, $amount: 30%) ;
+        box-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
         border: 3px solid transparent;
         border-radius: 10px;
-        box-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
         visibility: hidden;
-
+        transition: visibility 1s ease-in-out, box-shadow 1s ease-out;
+        
         &:hover{ 
             visibility: visible;
         }

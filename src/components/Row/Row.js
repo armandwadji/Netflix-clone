@@ -21,7 +21,9 @@ const Row = ({ title, fetchUrl, isPoster }) => {
       <h2 className='row__title'>{title}</h2>
       <div className='row__images'>
         {movies.map((movie) => (
-          <div key={movie.id} className='row__images--image'>
+          <div
+            key={movie.id}
+            className={Math.random() > 0.5 ? "row__images--image" : ""}>
             <img
               src={`https://image.tmdb.org/t/p/original/${
                 isPoster ? movie?.poster_path : movie?.backdrop_path
