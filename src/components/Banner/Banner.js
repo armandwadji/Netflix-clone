@@ -21,13 +21,6 @@ const Banner = () => {
     fetchData();
   }, []);
 
-  //Méthode pour afficher la description sur 150 lettres
-  //   const truncateText = (string, n) => {
-  //     return string?.length > n
-  //       ? string.substr(0, n - 1) + "..."
-  //       : "pas de description";
-  //   };
-
   //Constante qui affiche le poster de manière dynamique
   const bannerstyle = {
     backgroundImage: `url('https://image.tmdb.org/t/p/original/${
