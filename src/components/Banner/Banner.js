@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import axios from "axios";
 import request from "../../config/Request";
+import { fetchData } from "../../utils/Utils";
 
 const Banner = () => {
   const [movie, setMovie] = useState([]);
 
-  //Méthode qui appel la data du header
-  const fetchData = async () => {
-    const response = await axios.get(request.fetchTrending);
-    const {
-      data: { results },
-    } = response;
-
-    setMovie(await results[Math.floor(Math.random() * results.length - 1)]);
-  };
-
+  //Appel de la data pour le header de l'application
   useEffect(() => {
-    fetchData();
+    fetchData(request.fetchTrending).then((response) => {
+      const {
+        data: { results },
+      } = response;
+
+      setMovie(results[Math.floor(Math.random() * results.length - 1)]);
+    });
   }, []);
 
   //Constante qui affiche le poster de manière dynamique
@@ -27,8 +24,10 @@ const Banner = () => {
       movie?.backdrop_path || movie?.poster_path
     }')`,
     backgroundSize: "cover",
-    backgroundPosition: "top center",
-    objectFit: "contain",
+    backgroundPosition: "center top",
+    objectFit: "cover",
+    height: "100%",
+    width: "100%",
   };
 
   return (
