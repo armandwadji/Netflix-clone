@@ -3,6 +3,7 @@ const baseURL = "https://api.themoviedb.org/3";
 
 const request = {
   fetchTrending: `${baseURL}/trending/all/week?api_key=${API_KEY}&language=fr-FR`,
+  fetchNetflixOrignals: `${baseURL}/trending/all/week?api_key=${API_KEY}&language=fr-FR`,
   fetchTopRated: `${baseURL}/movie/top_rated?api_key=${API_KEY}&language=fr-FR`,
   fetchTActionMovies: `${baseURL}/discover/movie?api_key=${API_KEY}&width_genres=28`,
   fetchTComedyMovies: `${baseURL}/discover/movie?api_key=${API_KEY}&width_genres=35`,
