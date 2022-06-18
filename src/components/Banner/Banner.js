@@ -25,7 +25,7 @@ const Banner = () => {
     }')`,
     backgroundSize: "cover",
     backgroundPosition: "top center",
-    objectFit: "contain",
+    objectFit: "cover",
   };
 
   return (
