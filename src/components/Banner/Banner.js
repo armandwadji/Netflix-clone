@@ -24,8 +24,10 @@ const Banner = () => {
       movie?.backdrop_path || movie?.poster_path
     }')`,
     backgroundSize: "cover",
-    backgroundPosition: "top center",
+    backgroundPosition: "center top",
     objectFit: "cover",
+    height: "100%",
+    width: "100%",
   };
 
   return (
