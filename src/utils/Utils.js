@@ -17,7 +17,6 @@ export const genreFinder = (genre) => {
   let genreArray = [];
 
   for (let i of genre) {
-    // console.log(i);
     switch (i) {
       case 28:
         genreArray.push(`Action`);
