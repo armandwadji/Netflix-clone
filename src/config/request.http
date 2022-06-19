@@ -1,0 +1,38 @@
+
+//Trending request
+GET https://api.themoviedb.org/3/trending/all/week?api_key=0d35c2af84390857eb8ff45e611f310d&language=fr-FR
+
+###
+
+//Original Netflix request
+GET https://api.themoviedb.org/3/discover/tv?api_key=0d35c2af84390857eb8ff45e611f310d&with_networks=213
+
+###
+
+//Top Rated request
+GET https://api.themoviedb.org/3/movie/top_rated?api_key=0d35c2af84390857eb8ff45e611f310d&language=fr-FR
+
+###
+
+//Actions movies request
+GET https://api.themoviedb.org/3/discover/movie?api_key=0d35c2af84390857eb8ff45e611f310d&with_genre=28
+
+###
+
+//Comedy movies request
+GET https://api.themoviedb.org/3/discover/movie?api_key=0d35c2af84390857eb8ff45e611f310d&with_genre=35
+
+###
+
+//Horror movies request
+GET https://api.themoviedb.org/3/discover/movie?api_key=0d35c2af84390857eb8ff45e611f310d&with_genre=27
+
+###
+
+//Romance movies request
+GET https://api.themoviedb.org/3/discover/movie?api_key=0d35c2af84390857eb8ff45e611f310d&with_genre=10749
+
+###
+
+//Documentaries request
+GET https://api.themoviedb.org/3/discover/movie?api_key=0d35c2af84390857eb8ff45e611f310d&with_genre=99
