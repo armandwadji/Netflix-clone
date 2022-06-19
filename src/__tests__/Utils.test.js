@@ -1,4 +1,4 @@
-import { truncateText } from "../utils/Utils";
+import { genreFinder, truncateText } from "../utils/Utils";
 
 describe("Limit paragraph", () => {
   it("reduce a paragraphe lines", () => {
@@ -7,5 +7,11 @@ describe("Limit paragraph", () => {
 
   it("return pas de description if without paragraphe", () => {
     expect(truncateText("", 5)).toEqual("pas de description");
+  });
+});
+
+describe("genre finder", () => {
+  it("return à list with genre correspondant id", () => {
+    expect(genreFinder([28, 12])).toEqual(["Action", "Aventure"]);
   });
 });

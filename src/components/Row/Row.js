@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { fetchData } from "../../utils/Utils";
+import { fetchData, genreFinder } from "../../utils/Utils";
 
 const Row = ({ title, fetchUrl, isPoster }) => {
   const [movies, setMovies] = useState([]);
@@ -33,7 +33,16 @@ const Row = ({ title, fetchUrl, isPoster }) => {
             {/* TODO: implement the description by items */}
             <div className='row__images--description'>
               <h3>{movie?.title || movie?.original_title || movie?.name}</h3>
-              <p>{movie.overview}</p>
+
+              {movie.genre_ids && (
+                <ul>
+                  {genreFinder(movie.genre_ids).map((genre) => (
+                    <li key={genre}>{genre}</li>
+                  ))}
+                </ul>
+              )}
+
+              {movie.overview && <p>{movie.overview}</p>}
             </div>
           </div>
         ))}

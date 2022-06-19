@@ -53,26 +53,68 @@
             position: absolute;
             width: 85%;
             height: 100%;
-            top: 10%;
+            top: 8%;
             left: 30px;
+            opacity: 0;
+            transform: translateY(200px);
+            transition: transform 0.3s ease-in, opacity 0.3s ease-in;
 
             h3{
                 font-size: 1.1rem;
                 margin-bottom: 0.2rem;
+                color: lighten($color: $white_color, $amount: 5%) ;
             }
 
             p{
-                height: 50%;
+                position: relative;
+                height: 60px;
                 overflow-y: scroll;
+                margin-top: 10px;
+                text-align: justify;
+                font-size: 0.8rem;
+                line-height: 15px;
 
                 &::-webkit-scrollbar {
                     display: none;
                     }
+
+               
             }
+
+            ul{
+                display: flex;
+                flex-wrap: wrap;
+                padding-left: 0;
+                margin-top: 8px;
+                
+
+                li{
+                    background: $Netflix_color;
+                    border-radius: 18px;
+                    font-size: 0.7rem;
+                    margin: 0 4px 4px 0;
+                    padding:4px;
+                }
+        
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                height: 90px;
+                width: 120%;
+                background: linear-gradient(180deg, rgba(195, 34, 34, 0) 0%, $black_color 50%);
+                left: 50%;
+                transform: translateX(-52.5%);
+                bottom: 0%;
+                border-radius: 0 0 30px 30px;
+                opacity: 0.2;
+                transition: transform 0.3s ease-in-out;
+
+
+              }
             
-            opacity: 0;
-            transform: translateY(200px);
-            transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+            
             
         }
 
@@ -90,6 +132,10 @@
                 .row__images--description {
                     opacity: 1;
                     transform: translateY(0px);
+
+                    &::after{
+                        transform: translateX(-52.5%) scale(1.1);
+                    }
                 }
 
                 .row__images--image{
