@@ -36,3 +36,8 @@ GET https://api.themoviedb.org/3/discover/movie?api_key=0d35c2af84390857eb8ff45e
 
 //Documentaries request
 GET https://api.themoviedb.org/3/discover/movie?api_key=0d35c2af84390857eb8ff45e611f310d&with_genre=99
+
+###
+
+//Trailer request
+GET  https://api.themoviedb.org/3/movie/705861/videos?api_key=0d35c2af84390857eb8ff45e611f310d&language=fr-FR

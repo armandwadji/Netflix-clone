@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { fetchData, genreFinder } from "../../utils/Utils";
+import { fetchData } from "../../utils/Utils";
+import Movie from "../Movie/Movie";
 
 const Row = ({ title, fetchUrl, isPoster }) => {
   const [movies, setMovies] = useState([]);
@@ -21,30 +22,7 @@ const Row = ({ title, fetchUrl, isPoster }) => {
       <h2 className='row__title'>{title}</h2>
       <div className='row__images'>
         {movies.map((movie) => (
-          <div key={movie.id} className='description'>
-            <div className={Math.random() > 0.5 ? "row__images--image" : ""}>
-              <img
-                src={`https://image.tmdb.org/t/p/original/${
-                  isPoster ? movie?.poster_path : movie?.backdrop_path
-                }`}
-                alt={movie?.title || movie?.original_title || movie?.name}
-              />
-            </div>
-            {/* TODO: implement the description by items */}
-            <div className='row__images--description'>
-              <h3>{movie?.title || movie?.original_title || movie?.name}</h3>
-
-              {movie.genre_ids && (
-                <ul>
-                  {genreFinder(movie.genre_ids).map((genre) => (
-                    <li key={genre}>{genre}</li>
-                  ))}
-                </ul>
-              )}
-
-              {movie.overview && <p>{movie.overview}</p>}
-            </div>
-          </div>
+          <Movie key={movie.id} movie={movie} isPoster={isPoster} />
         ))}
       </div>
     </div>

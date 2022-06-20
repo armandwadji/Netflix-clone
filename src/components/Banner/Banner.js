@@ -3,9 +3,16 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import request from "../../config/Request";
 import { fetchData } from "../../utils/Utils";
+import QuickView from "../QuickView/QuickView";
 
 const Banner = () => {
   const [movie, setMovie] = useState([]);
+
+  const [popup, setPopup] = useState(false);
+
+  const handleClickpopup = () => {
+    setPopup(!popup);
+  };
 
   //Appel de la data pour le header de l'application
   useEffect(() => {
@@ -26,7 +33,7 @@ const Banner = () => {
     backgroundSize: "cover",
     backgroundPosition: "center top",
     objectFit: "cover",
-    height: "100%",
+    // height: "100%",
     width: "100%",
   };
 
@@ -45,12 +52,16 @@ const Banner = () => {
             <PlayArrowIcon />
             Lecture
           </button>
-          <button className='bannerContent__buttons--button'>
+
+          <button
+            className='bannerContent__buttons--button'
+            onClick={handleClickpopup}>
             <HelpOutlineIcon />
             Plus d'infos
           </button>
         </div>
       </div>
+      <QuickView movie={movie} popupFonction={handleClickpopup} popup={popup} />
     </header>
   );
 };
