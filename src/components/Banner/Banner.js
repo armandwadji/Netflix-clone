@@ -35,7 +35,6 @@ const Banner = () => {
     backgroundSize: "cover",
     backgroundPosition: "center top",
     objectFit: "cover",
-    // height: "100%",
     width: "100%",
   };
 
