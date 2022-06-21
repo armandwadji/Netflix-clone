@@ -6,7 +6,9 @@ import Video from "../videoComponent/Video";
 const QuickView = ({ movie, popupFonction, popup }) => {
   return (
     <div className={`quickview ${popup && "open"}`}>
-      <Video movie={movie} popup={popup} />
+      <div className='quickview__video'>
+        <Video movie={movie} popup={popup} />
+      </div>
       <div className='quickview__banner'>
         <div className='quickview__content'>
           <h3 className='quickview__title'>

@@ -9,8 +9,8 @@ const request = {
   fetchTComedyMovies: `${baseURL}/discover/movie?api_key=${API_KEY}&language=fr-FR&with_genres=35`,
   fetchTHorrorMovies: `${baseURL}/discover/movie?api_key=${API_KEY}&language=fr-FR&with_genres=27`,
   fetchTRomanceMovies: `${baseURL}/discover/movie?api_key=${API_KEY}&language=fr-FR&with_genres=10749`,
+  fetchMusique: `${baseURL}/discover/movie?api_key=${API_KEY}&language=fr-FR&with_genres=10402`,
   fetchTDocumentaries: `${baseURL}/discover/movie?api_key=${API_KEY}&language=fr-FR&with_genres=99`,
-  // fetchtrailer: `${baseURL}/tv/99966/videos?api_key=${API_KEY}&language=fr-FR`,
 };
 
 export default request;

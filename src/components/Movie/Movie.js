@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { genreFinder } from "../../utils/Utils";
-import QuickView from "../QuickView/QuickView";
+// import QuickView from "../QuickView/QuickView";
+import Video from "../videoComponent/Video";
 
 const Movie = ({ movie, isPoster }) => {
   const [popup, setPopup] = useState(false);
@@ -9,16 +10,16 @@ const Movie = ({ movie, isPoster }) => {
     setPopup(!popup);
   };
 
-  return (
-    <>
-      {popup && (
-        <QuickView
-          movie={movie}
-          popupFonction={handleClickpopup}
-          popup={popup}
-        />
-      )}
+  const handleFalsePopup = () => {
+    setPopup(false);
+  };
 
+  return (
+    <div
+      className='movie'
+      // onMouseEnter={handleClickpopup}
+      onMouseLeave={handleFalsePopup}>
+      <Video movie={movie} popup={popup} />
       <div className='description' onClick={handleClickpopup}>
         <div className={Math.random() > 0.5 ? "row__images--image" : ""}>
           <img
@@ -58,7 +59,7 @@ const Movie = ({ movie, isPoster }) => {
           {movie.overview && <p>{movie.overview}</p>}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

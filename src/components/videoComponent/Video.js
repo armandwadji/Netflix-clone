@@ -24,20 +24,22 @@ const Video = ({ movie, popup }) => {
       if (!movieTrailerId) {
         fetchData(
           `${baseURL}/tv/${movie?.id}/videos?api_key=${API_KEY}&language=fr-FR`
-        ).then((response) => {
-          const {
-            data: { results },
-          } = response;
-          setMovietrailerId(
-            results[Math.floor(Math.random() * results.length)].key
-          );
-        });
+        )
+          .then((response) => {
+            const {
+              data: { results },
+            } = response;
+            setMovietrailerId(
+              results[Math.floor(Math.random() * results.length)].key
+            );
+          })
+          .catch((err) => console.log(err));
       }
     }
   }, [movie.id, movieTrailerId, popup]);
 
   return (
-    <div className='video'>
+    <div className={`video ${popup && "visible"}`}>
       {movieTrailerId && (
         <iframe
           src={`https://www.youtube.com/embed/${movieTrailerId}? rel=0&autoplay=${

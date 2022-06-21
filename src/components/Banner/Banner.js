@@ -16,13 +16,15 @@ const Banner = () => {
 
   //Appel de la data pour le header de l'application
   useEffect(() => {
-    fetchData(request.fetchTrending).then((response) => {
-      const {
-        data: { results },
-      } = response;
+    fetchData(request.fetchTrending)
+      .then((response) => {
+        const {
+          data: { results },
+        } = response;
 
-      setMovie(results[Math.floor(Math.random() * results.length - 1)]);
-    });
+        setMovie(results[Math.floor(Math.random() * results.length - 1)]);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   //Constante qui affiche le poster de manière dynamique

@@ -4,11 +4,20 @@
     background-color: $black_color;
     border-radius: 10px;
     height: 70vh;
+    max-width: 60vw;
     top: 70px;
     box-shadow: 0 0 10px $black_color;
-    margin: 0 2%;
+    margin: 0 auto;
     overflow-y: scroll;
     visibility: hidden;
+
+    &__video{
+        position: relative;
+        height: 60%;
+        // margin-top: -4.5%;
+        width: auto;
+        overflow-x: hidden;
+    }
 
     &__banner{
         
@@ -51,11 +60,16 @@
         right: 10px;
         background-color: none;
         color: $white_color;
+        z-index: 10;
     }
 
     &.open{
          visibility: visible;
     }
+
+    &::-webkit-scrollbar {
+        display: none;
+        }
 
     @media screen and (min-width:768px) {
         width: 70%;
