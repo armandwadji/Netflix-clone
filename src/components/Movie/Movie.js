@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { genreFinder } from "../../utils/Utils";
-// import QuickView from "../QuickView/QuickView";
+import { formatDate, genreFinder } from "../../utils/Utils";
 import Video from "../videoComponent/Video";
 
 const Movie = ({ movie, isPoster }) => {
@@ -35,17 +34,11 @@ const Movie = ({ movie, isPoster }) => {
           <h3>{movie?.title || movie?.original_title || movie?.name}</h3>
 
           {/* Condtion pour afficher la dte de sortie de la date disponible dans l'API */}
-          {isPoster
-            ? movie.first_air_date && (
-                <h5>
-                  Sortie : {movie.first_air_date.split("-").reverse().join("/")}
-                </h5>
-              )
-            : movie.release_date && (
-                <h5>
-                  Sortie : {movie?.release_date.split("-").reverse().join("/")}
-                </h5>
-              )}
+          {formatDate(movie.first_air_date) ? (
+            <h5>Sortie : {formatDate(movie.first_air_date)}</h5>
+          ) : (
+            <h5>Sortie : {formatDate(movie.release_date)}</h5>
+          )}
 
           {movie.genre_ids && (
             <ul>

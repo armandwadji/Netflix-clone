@@ -13,7 +13,6 @@
         align-items: center;
         overflow-x: visible;
         overflow-y: hidden;
-        width: 100%;
         padding: 0.5rem 0;
         cursor: pointer;
 
@@ -114,7 +113,9 @@
 
               }
             
-            
+              @media screen and (max-width:768px) {
+                visibility: hidden;
+            }
             
         }
 
@@ -145,8 +146,9 @@
                     }
                 }
             }
-        }
 
+           
+        }
     }
 
   
