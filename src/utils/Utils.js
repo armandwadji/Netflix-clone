@@ -82,3 +82,10 @@ export const genreFinder = (genre) => {
 
   return genreArray;
 };
+
+export const formatDate = (date) => {
+  if (date) {
+    return date.split("-").reverse().join("/");
+  }
+  return;
+};

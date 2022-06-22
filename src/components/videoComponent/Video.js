@@ -16,9 +16,7 @@ const Video = ({ movie, popup }) => {
         const {
           data: { results },
         } = response;
-        setMovietrailerId(
-          results[Math.floor(Math.random() * results.length)].key
-        );
+        results && setMovietrailerId(results[0].key);
       });
 
       if (!movieTrailerId) {
@@ -29,9 +27,7 @@ const Video = ({ movie, popup }) => {
             const {
               data: { results },
             } = response;
-            setMovietrailerId(
-              results[Math.floor(Math.random() * results.length)].key
-            );
+            results && setMovietrailerId(results[0].key);
           })
           .catch((err) => console.log(err));
       }
@@ -42,12 +38,15 @@ const Video = ({ movie, popup }) => {
     <div className={`video ${popup && "visible"}`}>
       {movieTrailerId && (
         <iframe
-          src={`https://www.youtube.com/embed/${movieTrailerId}? rel=0&autoplay=${
-            popup ? 1 : 0
-          }`}
+          src={
+            movieTrailerId &&
+            `https://www.youtube.com/embed/${movieTrailerId}? rel=0&autoplay=${
+              popup ? 1 : 0
+            }`
+          }
           title='video'
           frameborder='0'
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'></iframe>
+          allowFullScreen></iframe>
       )}
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { genreFinder } from "../../utils/Utils";
+import { formatDate, genreFinder } from "../../utils/Utils";
 import Video from "../videoComponent/Video";
 
 const QuickView = ({ movie, popupFonction, popup }) => {
@@ -15,9 +15,13 @@ const QuickView = ({ movie, popupFonction, popup }) => {
             {movie?.title || movie?.original_title || movie?.name}
           </h3>
 
-          {movie.first_air_date && (
+          {formatDate(movie.first_air_date) ? (
             <h5 className='quickview__date'>
-              Sortie : {movie.first_air_date.split("-").reverse().join("/")}
+              Sortie : {formatDate(movie.first_air_date)}
+            </h5>
+          ) : (
+            <h5 className='quickview__date'>
+              Sortie : {formatDate(movie.release_date)}
             </h5>
           )}
 
