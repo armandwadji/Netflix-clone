@@ -21,12 +21,12 @@ const Home = () => {
       />
       <Row title='Tendances actuelles' fetchUrl={request.fetchTrending} />
       <Row title='Les mieux notés' fetchUrl={request.fetchTopRated} />
-      <Row title='Actions' fetchUrl={request.fetchTActionMovies} />
-      <Row title='Horreurs' fetchUrl={request.fetchTHorrorMovies} />
-      <Row title='Comédies' fetchUrl={request.fetchTComedyMovies} />
-      <Row title='Romances' fetchUrl={request.fetchTRomanceMovies} />
-      <Row title='Musiques' fetchUrl={request.fetchMusique} />
-      <Row title='Documentaires' fetchUrl={request.fetchTDocumentaries} />
+      <Row title='Action' fetchUrl={request.fetchTActionMovies} />
+      <Row title='Horreur' fetchUrl={request.fetchTHorrorMovies} />
+      <Row title='Comédie' fetchUrl={request.fetchTComedyMovies} />
+      <Row title='Romance' fetchUrl={request.fetchTRomanceMovies} />
+      <Row title='Familial' fetchUrl={request.fetchMusique} />
+      <Row title='Thriller' fetchUrl={request.fetchTDocumentaries} />
 
       {/* Video */}
 

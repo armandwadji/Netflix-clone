@@ -1,54 +1,72 @@
 import React, { useEffect, useState } from "react";
-import { API_KEY, baseURL } from "../../config/Request";
+import Iframe from "react-iframe";
+import { API_KEY, baseURL, urlDetail } from "../../config/Request";
 import { fetchData } from "../../utils/Utils";
 
 const Video = ({ movie, popup }) => {
-  const [movieTrailerId, setMovietrailerId] = useState();
+  const [movieTrailerKey, setMovieTrailerKey] = useState();
 
-  //   const fetchtrailer = `${baseURL}/${movie.media_type}/${movie?.id}/videos?api_key=${API_KEY}&language=fr-FR`;
-
-  //Appel de la data pour les rows de l'application
+  //Appel de la data pour la lecture de la vidéo
   useEffect(() => {
     if (popup) {
       fetchData(
-        `${baseURL}/movie/${movie?.id}/videos?api_key=${API_KEY}&language=fr-FR`
-      ).then((response) => {
-        const {
-          data: { results },
-        } = response;
-        results && setMovietrailerId(results[0].key);
-      });
+        `${urlDetail}${movie.title || movie.original_title || movie.name}`
+      )
+        .then((res) => {
+          const movieDetail = res.data.results.filter(
+            (res) => res.id === movie.id
+          );
+          // console.log(res.data.results);
+          return movieDetail;
+        })
+        .then((res) => {
+          const { id, media_type } = res[0];
+          // console.log(id, media_type);
 
-      if (!movieTrailerId) {
-        fetchData(
-          `${baseURL}/tv/${movie?.id}/videos?api_key=${API_KEY}&language=fr-FR`
-        )
-          .then((response) => {
-            const {
-              data: { results },
-            } = response;
-            results && setMovietrailerId(results[0].key);
-          })
-          .catch((err) => console.log(err));
-      }
+          fetchData(
+            `${baseURL}/${media_type}/${id}/videos?api_key=${API_KEY}&language=fr-FR`
+          )
+            .then((response) => {
+              const {
+                data: { results },
+              } = response;
+              results && setMovieTrailerKey(results[0].key);
+              // console.log(movieTrailerKey);
+            })
+            .catch((err) => console.log(`Error movieKey: ${err}`));
+        })
+        .catch((err) => console.log(`Error movieDetail: ${err}`));
     }
-  }, [movie.id, movieTrailerId, popup]);
+  }, [
+    movie.id,
+    movie.name,
+    movie.original_title,
+    movie.title,
+    movieTrailerKey,
+    popup,
+  ]);
 
   return (
-    <div className={`video ${popup && "visible"}`}>
-      {movieTrailerId && (
-        <iframe
-          src={
-            movieTrailerId &&
-            `https://www.youtube.com/embed/${movieTrailerId}? rel=0&autoplay=${
-              popup ? 1 : 0
-            }`
-          }
-          title='video'
-          frameborder='0'
-          allowFullScreen></iframe>
+    <>
+      {popup && (
+        <div className={`video ${popup && "visible"}`}>
+          {movieTrailerKey && (
+            <Iframe
+              src={
+                movieTrailerKey &&
+                `https://www.youtube.com/embed/${movieTrailerKey}? rel=0&autoplay=${
+                  popup ? 1 : 0
+                }`
+              }
+              title={movie.title || movie.original_title || movie.name}
+              frameborder='0'
+              allowFullScreen
+              loading='eager'
+            />
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
