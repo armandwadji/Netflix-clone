@@ -16,7 +16,9 @@ const Banner = () => {
 
   //Appel de la data pour le header de l'application
   useEffect(() => {
-    fetchData(request.fetchTrending)
+    fetchData(
+      `${request.fetchTrending}&page=${Math.floor(Math.random() * 100)}`
+    )
       .then((response) => {
         const {
           data: { results },
@@ -44,7 +46,10 @@ const Banner = () => {
         <header className='banner' style={bannerstyle}>
           <div className='bannerContent'>
             <h1 className='bannerContent__title'>
-              {movie?.title || movie?.original_title || movie?.name}
+              {movie?.title ||
+                movie?.original_title ||
+                movie?.name ||
+                movie?.original_name}
             </h1>
             {formatDate(movie.first_air_date) ? (
               <h5 className='bannerContent__date'>
