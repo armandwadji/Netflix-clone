@@ -4,13 +4,18 @@ import { API_KEY, baseURL, urlDetail } from "../../config/Request";
 import { fetchData } from "../../utils/Utils";
 
 const Video = ({ movie, popup }) => {
-  const [movieTrailerKey, setMovieTrailerKey] = useState();
+  const [movieTrailerKey, setMovieTrailerKey] = useState("");
 
   //Appel de la data pour la lecture de la vidéo
   useEffect(() => {
     if (popup) {
       fetchData(
-        `${urlDetail}${movie.title || movie.original_title || movie.name}`
+        `${urlDetail}${
+          movie.title ||
+          movie.original_title ||
+          movie.name ||
+          movie.original_name
+        }`
       )
         .then((res) => {
           const movieDetail = res.data.results.filter(
@@ -30,6 +35,7 @@ const Video = ({ movie, popup }) => {
               const {
                 data: { results },
               } = response;
+
               results && setMovieTrailerKey(results[0].key);
               // console.log(movieTrailerKey);
             })
@@ -40,6 +46,7 @@ const Video = ({ movie, popup }) => {
   }, [
     movie.id,
     movie.name,
+    movie.original_name,
     movie.original_title,
     movie.title,
     movieTrailerKey,

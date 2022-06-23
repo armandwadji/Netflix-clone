@@ -1,6 +1,6 @@
 
 //Trending request
-GET https://api.themoviedb.org/3/trending/all/week?api_key=0d35c2af84390857eb8ff45e611f310d&language=fr-FR
+GET https://api.themoviedb.org/3/trending/all/week?api_key=0d35c2af84390857eb8ff45e611f310d&language=fr-FR&page=2
 
 ###
 
@@ -41,3 +41,6 @@ GET https://api.themoviedb.org/3/discover/movie?api_key=0d35c2af84390857eb8ff45e
 
 //Trailer request
 GET  https://api.themoviedb.org/3/movie/705861/videos?api_key=0d35c2af84390857eb8ff45e611f310d&language=fr-FR
+
+###
+GET https://api.themoviedb.org/3/movie/9741/videos?api_key=0d35c2af84390857eb8ff45e611f310d&language=fr-FR
