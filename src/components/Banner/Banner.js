@@ -83,6 +83,7 @@ const Banner = () => {
             popupFonction={handleClickpopup}
             popup={popup}
           />
+          <div className='bannerContent__fadebottom' />
         </header>
       )}
     </>
