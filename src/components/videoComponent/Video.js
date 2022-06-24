@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import YouTube from "react-youtube";
-import { API_KEY, baseURL, urlDetail } from "../../config/Request";
-import UseKeyYoutubeTrailer from "../../Hooks/UseKeyYoutubeTrailer";
-import { fetchData } from "../../utils/Utils";
+// import { API_KEY, baseURL, urlDetail } from "../../config/Request";
+// import UseKeyYoutubeTrailer from "../../Hooks/UseKeyYoutubeTrailer";
+// import { fetchData } from "../../utils/Utils";
 
 const Video = ({ movie, popup }) => {
   const [movieTrailerKey, setMovieTrailerKey] = useState("");
 
-  const key = UseKeyYoutubeTrailer(movie);
+  // const key = UseKeyYoutubeTrailer(movie);
   // console.log(key);
 
   //Appel de la data pour la lecture de la vidéo

@@ -8,6 +8,7 @@ import UseFetchData from "../../Hooks/UseFetchData";
 
 const Banner = () => {
   const [popup, setPopup] = useState(false);
+  const [movie, setMovie] = useState(null);
 
   //Fonction pour le popup de la video
   const handleClickpopup = () => {
@@ -15,8 +16,9 @@ const Banner = () => {
   };
 
   const results = UseFetchData(request.fetchTrending);
-  const movie =
+  const result =
     results && results[Math.floor(Math.random() * results.length - 1)];
+  result && setMovie(result);
 
   //Constante qui affiche le poster de manière dynamique
   const bannerstyle = {
@@ -61,7 +63,7 @@ const Banner = () => {
 
               <button
                 className='bannerContent__buttons--button'
-                onClick={(e) => handleClickpopup()}>
+                onClick={handleClickpopup}>
                 <HelpOutlineIcon />
                 Plus d'infos
               </button>
@@ -69,7 +71,7 @@ const Banner = () => {
           </div>
           <QuickView
             movie={movie}
-            popupFonction={(e) => handleClickpopup()}
+            popupFonction={handleClickpopup}
             popup={popup}
           />
           <div className='bannerContent__fadebottom' />
