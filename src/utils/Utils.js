@@ -9,7 +9,7 @@ export const truncateText = (string, n) => {
 
 //Méthode qui fait les appels api selon le paramètre passé en argument de la fonction
 export const fetchData = async (request) => {
-  return axios.get(request);
+  return await axios.get(request);
 };
 
 //Méthode pour afficher les genres:

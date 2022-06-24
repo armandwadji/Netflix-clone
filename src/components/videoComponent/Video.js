@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Iframe from "react-iframe";
+import YouTube from "react-youtube";
 import { API_KEY, baseURL, urlDetail } from "../../config/Request";
 import { fetchData } from "../../utils/Utils";
 
@@ -28,18 +28,19 @@ const Video = ({ movie, popup }) => {
           const { id, media_type } = res[0];
           // console.log(id, media_type);
 
-          fetchData(
+          return fetchData(
             `${baseURL}/${media_type}/${id}/videos?api_key=${API_KEY}&language=fr-FR`
-          )
-            .then((response) => {
-              const {
-                data: { results },
-              } = response;
-
-              results && setMovieTrailerKey(results[0].key);
-              // console.log(movieTrailerKey);
-            })
-            .catch((err) => console.log(`Error movieKey: ${err}`));
+          ).then((response) => {
+            const {
+              data: { results },
+            } = response;
+            // console.log("results : ", results);
+            if (results.length > 0) {
+              setMovieTrailerKey(results[0].key);
+              // console.log("movieTrailerKey : ", movieTrailerKey);
+            }
+          });
+          // .catch((err) => console.log(`Error movieKey: ${err}`));
         })
         .catch((err) => console.log(`Error movieDetail: ${err}`));
     }
@@ -57,20 +58,19 @@ const Video = ({ movie, popup }) => {
     <>
       {popup && (
         <div className={`video ${popup && "visible"}`}>
-          {movieTrailerKey && (
-            <Iframe
-              src={
-                movieTrailerKey &&
-                `https://www.youtube.com/embed/${movieTrailerKey}? rel=0&autoplay=${
-                  popup ? 1 : 0
-                }`
-              }
-              title={movie.title || movie.original_title || movie.name}
-              frameborder='0'
-              allowFullScreen
-              loading='eager'
+          {movieTrailerKey ? (
+            <YouTube
+              videoId={movieTrailerKey}
+              opts={{
+                width: "100%",
+                height: "100%",
+                playerVars: {
+                  autoplay: 1,
+                },
+              }}
+              // className='iframe'
             />
-          )}
+          ) : null}
         </div>
       )}
     </>
