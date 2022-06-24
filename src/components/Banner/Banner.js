@@ -1,33 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import request from "../../config/Request";
-import { fetchData, formatDate } from "../../utils/Utils";
+import { formatDate } from "../../utils/Utils";
 import QuickView from "../QuickView/QuickView";
+import UseFetchData from "../../Hooks/UseFetchData";
 
 const Banner = () => {
-  const [movie, setMovie] = useState([]);
-
   const [popup, setPopup] = useState(false);
 
+  //Fonction pour le popup de la video
   const handleClickpopup = () => {
     setPopup(!popup);
   };
 
-  //Appel de la data pour le header de l'application
-  useEffect(() => {
-    fetchData(
-      `${request.fetchTrending}&page=${Math.floor(Math.random() * 100)}`
-    )
-      .then((response) => {
-        const {
-          data: { results },
-        } = response;
-
-        setMovie(results[Math.floor(Math.random() * results.length - 1)]);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const results = UseFetchData(request.fetchTrending);
+  const movie =
+    results && results[Math.floor(Math.random() * results.length - 1)];
 
   //Constante qui affiche le poster de manière dynamique
   const bannerstyle = {
@@ -42,7 +31,7 @@ const Banner = () => {
 
   return (
     <>
-      {(movie.backdrop_path || movie.poster_path) && (
+      {movie && (movie.backdrop_path || movie.poster_path) && (
         <header className='banner' style={bannerstyle}>
           <div className='bannerContent'>
             <h1 className='bannerContent__title'>
@@ -72,7 +61,7 @@ const Banner = () => {
 
               <button
                 className='bannerContent__buttons--button'
-                onClick={handleClickpopup}>
+                onClick={(e) => handleClickpopup()}>
                 <HelpOutlineIcon />
                 Plus d'infos
               </button>
@@ -80,7 +69,7 @@ const Banner = () => {
           </div>
           <QuickView
             movie={movie}
-            popupFonction={handleClickpopup}
+            popupFonction={(e) => handleClickpopup()}
             popup={popup}
           />
           <div className='bannerContent__fadebottom' />
