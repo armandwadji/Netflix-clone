@@ -31,7 +31,7 @@ Ensuite il faudra installer les dépendances du projet avec la commande suivante
 npm install
 ```
 ## Démarrer l'application
-Une fois les dependances correctement installer, lancer enfin le projet grâce a commande suivante :
+Une fois les dependances correctement installer, lancer enfin le projet grâce à la commande suivante :
 
 ```
 npm start
@@ -50,5 +50,3 @@ npm run test
 [node]: https://nodejs.org
 [git]: https://git-scm.com/
 <!-- prettier-ignore-end -->
-
-
