@@ -2,7 +2,7 @@
   <h1 align="center">
     <a href="https://github.com/armandwadji/Netflix-clone.git">React NetFlix Clone
     </a>  
-    <img width="15px" heigth="15px" src = "https://user-images.githubusercontent.com/90448006/175748986-06a1fe8c-538c-4c28-aaaf-8be8b9f27847.png" />
+    <img width="25px" heigth="15px" align="center" src = "https://user-images.githubusercontent.com/90448006/175748986-06a1fe8c-538c-4c28-aaaf-8be8b9f27847.png" />
   </h1>
 </div> 
   
