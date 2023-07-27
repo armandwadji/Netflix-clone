@@ -25,28 +25,28 @@ const Footer = () => {
 
         <ul className='footer__links'>
           <li className='footer__links--link'>
-            <a href='/'>Lien Footer</a>
+            <a href='/'>Autodescription</a>
           </li>
           <li className='footer__links--link'>
-            <a href='/'>Lien Footer</a>
+            <a href='/'>Relation investisseur</a>
           </li>
           <li className='footer__links--link'>
-            <a href='/'>Lien Footer</a>
+            <a href='/'>Confidentialité</a>
           </li>
           <li className='footer__links--link'>
-            <a href='/'>Lien Footer</a>
+            <a href='/'>Centre d'aide</a>
           </li>
           <li className='footer__links--link'>
-            <a href='/'>Lien Footer</a>
+            <a href='/'>Recrutement</a>
           </li>
           <li className='footer__links--link'>
-            <a href='/'>Lien Footer</a>
+            <a href='/'>Informations legales</a>
           </li>
           <li className='footer__links--link'>
-            <a href='/'>Lien Footer</a>
+            <a href='/'>Cates cadeaux</a>
           </li>
           <li className='footer__links--link'>
-            <a href='/'>Lien Footer</a>
+            <a href='/'>Presse</a>
           </li>
         </ul>
 
