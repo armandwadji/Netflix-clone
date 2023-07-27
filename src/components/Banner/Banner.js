@@ -7,23 +7,13 @@ import QuickView from "../QuickView/QuickView";
 
 const Banner = () => {
   const [movie, setMovie] = useState([]);
-
   const [popup, setPopup] = useState(false);
-
-  const handleClickpopup = () => {
-    setPopup(!popup);
-  };
 
   //Appel de la data pour le header de l'application
   useEffect(() => {
-    fetchData(
-      `${request.fetchTrending}&page=${Math.floor(Math.random() * 100)}`
-    )
+    fetchData( `${request.at(1).genreUrl}&page=${Math.floor(Math.random() * 100)}`)
       .then((response) => {
-        const {
-          data: { results },
-        } = response;
-
+        const { data: { results } } = response;
         setMovie(results[Math.floor(Math.random() * results.length - 1)]);
       })
       .catch((err) => console.log(err));
@@ -31,9 +21,7 @@ const Banner = () => {
 
   //Constante qui affiche le poster de manière dynamique
   const bannerstyle = {
-    backgroundImage: `url('https://image.tmdb.org/t/p/original/${
-      movie?.backdrop_path || movie?.poster_path
-    }')`,
+    backgroundImage: `url('https://image.tmdb.org/t/p/original/${ movie?.backdrop_path || movie?.poster_path }')`,
     backgroundSize: "cover",
     backgroundPosition: "center top",
     objectFit: "cover",
@@ -42,47 +30,29 @@ const Banner = () => {
 
   return (
     <>
-      {(movie.backdrop_path || movie.poster_path) && (
+      {(movie?.backdrop_path || movie?.poster_path) && (
         <header className='banner' style={bannerstyle}>
           <div className='bannerContent'>
             <h1 className='bannerContent__title'>
-              {movie?.title ||
-                movie?.original_title ||
-                movie?.name ||
-                movie?.original_name}
+              {movie?.title || movie?.original_title || movie?.name || movie?.original_name}
             </h1>
-            {formatDate(movie.first_air_date) ? (
-              <h5 className='bannerContent__date'>
-                Sortie : {formatDate(movie.first_air_date)}
-              </h5>
-            ) : (
-              <h5 className='bannerContent__date'>
-                Sortie : {formatDate(movie.release_date)}
-              </h5>
-            )}
+            <h5 className='bannerContent__date'>
+              Sortie : {formatDate(movie?.first_air_date || movie?.release_date)}
+            </h5>
             <p className='bannerContent__description'>
               {/* {truncateText(movie?.overview, 120)} */}
               {movie?.overview}
             </p>
             <div className='bannerContent__buttons'>
               <button className='bannerContent__buttons--button'>
-                <PlayArrowIcon />
-                Lecture
+                <PlayArrowIcon /> Lecture
               </button>
-
-              <button
-                className='bannerContent__buttons--button'
-                onClick={handleClickpopup}>
-                <HelpOutlineIcon />
-                Plus d'infos
+              <button className='bannerContent__buttons--button' onClick={ _ => setPopup(!popup)}>
+                <HelpOutlineIcon /> Plus d'infos
               </button>
             </div>
           </div>
-          <QuickView
-            movie={movie}
-            popupFonction={handleClickpopup}
-            popup={popup}
-          />
+          <QuickView movie={movie} popupFonction={ _ => setPopup(!popup)} popup={popup} />
           <div className='bannerContent__fadebottom' />
         </header>
       )}

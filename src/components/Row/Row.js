@@ -9,10 +9,7 @@ const Row = ({ title, fetchUrl, isPoster }) => {
   //Appel de la data pour les rows de l'application
   useEffect(() => {
     fetchData(fetchUrl).then((response) => {
-      const {
-        data: { results },
-      } = response;
-
+      const { data: { results } } = response;
       setMovies(results);
     });
   }, [fetchUrl]);
@@ -21,9 +18,7 @@ const Row = ({ title, fetchUrl, isPoster }) => {
     <div className='row'>
       <h2 className='row__title'>{title}</h2>
       <div className='row__images'>
-        {movies.map((movie) => (
-          <Movie key={movie.id} movie={movie} isPoster={isPoster} />
-        ))}
+        {movies.map( movie => <Movie key={movie.id} movie={movie} isPoster={isPoster} /> )}
       </div>
     </div>
   );

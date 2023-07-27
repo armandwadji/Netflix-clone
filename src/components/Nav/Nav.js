@@ -9,24 +9,13 @@ const Nav = () => {
   const [toogleMenu, setToogleMenu] = useState(false);
 
   /* Scrool */
-  const transitionNav = () => {
-    window.scrollY > 100 ? setNavBlack(true) : setNavBlack(false);
-  };
-  useState(() => {
-    document.addEventListener("scroll", transitionNav);
-  });
+  const transitionNav = _ => window.scrollY > 100 ? setNavBlack( true ) : setNavBlack( false );
 
-  /* Burger */
-  const handleClick = () => {
-    setToogleMenu(!toogleMenu);
-  };
+  useState( _ => document.addEventListener( "scroll", transitionNav )  );
 
   return (
-    <div
-      className={`nav 
-      ${(navBlack || toogleMenu) && "nav--black"} 
-      ${toogleMenu && "show"}`}>
-      <button className='nav__burger' onClick={handleClick}>
+    <div className={`nav ${(navBlack || toogleMenu) ? "nav--black" : ''} ${toogleMenu ? "show" : ''}`}>
+      <button className='nav__burger' onClick={ _ => setToogleMenu(!toogleMenu)}>
         <MenuIcon />
       </button>
       <img src='./images/logo.png' className='nav__logo' alt='Netfix-logo' />

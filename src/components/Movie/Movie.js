@@ -5,54 +5,36 @@ import Video from "../videoComponent/Video";
 const Movie = ({ movie, isPoster }) => {
   const [popup, setPopup] = useState(false);
 
-  const handleClickpopup = () => {
-    setPopup(!popup);
-  };
-
-  const handleFalsePopup = () => {
-    setPopup(false);
-  };
-
   return (
-    <div
-      className='movie'
-      // onMouseEnter={handleClickpopup}
-      onMouseLeave={handleFalsePopup}>
-      <Video movie={movie} popup={popup} />
-      <div className='description' onClick={handleClickpopup}>
-        <div className={Math.random() > 0.5 ? "row__images--image" : ""}>
-          <img
-            src={`https://image.tmdb.org/t/p/original/${
-              isPoster ? movie?.poster_path : movie?.backdrop_path
-            }`}
-            alt={movie?.title || movie?.original_title || movie?.name}
-          />
-        </div>
 
-        {/* TODO: implement the description by items */}
-        <div className='row__images--description'>
-          <h3>{movie?.title || movie?.original_title || movie?.name}</h3>
-
-          {/* Condtion pour afficher la dte de sortie de la date disponible dans l'API */}
-          {formatDate(movie.first_air_date) ? (
-            <h5>Sortie : {formatDate(movie.first_air_date)}</h5>
-          ) : (
-            <h5>Sortie : {formatDate(movie.release_date)}</h5>
+    <>
+      <div className='movie' onMouseLeave={ _ => setPopup( false ) }>
+        <div className='description' onClick={ _ => setPopup(!popup) }>
+          { movie.backdrop_path && movie.poster_path && (
+            
+            <figure className={Math.random() > 0.5 ? "row__images--image" : ""} style={{ visibility: popup ? 'hidden' : 'visible' }}>
+              <img
+                src={ `https://image.tmdb.org/t/p/original/${isPoster ? movie?.poster_path : movie?.backdrop_path}` }
+                alt={ movie?.title || movie?.original_title || movie?.name || movie?.original_name } 
+              />
+            </figure>
           )}
 
-          {movie.genre_ids && (
-            <ul>
-              {genreFinder(movie.genre_ids).map((genre) => (
-                <li key={genre}>{genre}</li>
-              ))}
-              {/* Lien vers la video */}
-            </ul>
-          )}
+          <div className='row__images--description'>
+            <h3>{movie?.title || movie?.original_title || movie?.name}</h3>
 
-          {movie.overview && <p>{movie.overview}</p>}
+              <h5>Sortie : {formatDate(movie?.first_air_date || movie.release_date)}</h5>
+
+              <ul>
+                {genreFinder(movie?.genre_ids)?.map( genre =>  <li key={genre}>{genre}</li>  )}
+              </ul>
+
+              <p>{movie?.overview}</p>
+          </div>
         </div>
+        <Video movie={movie} popup={popup} />
       </div>
-    </div>
+    </>
   );
 };
 

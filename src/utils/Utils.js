@@ -1,16 +1,11 @@
 import axios from "axios";
 
 //Méthode pour afficher la description sur 150 lettres
-export const truncateText = (string, n) => {
-  return string?.length > n
-    ? string.substr(0, n) + "..."
-    : "pas de description";
-};
+export const truncateText = (string, n) =>  string?.length > n ? string.substr(0, n) + "..." : "pas de description";
+;
 
 //Méthode qui fait les appels api selon le paramètre passé en argument de la fonction
-export const fetchData = async (request) => {
-  return await axios.get(request);
-};
+export const fetchData = async (request) =>  await axios.get(request);
 
 //Méthode pour afficher les genres:
 export const genreFinder = (genre) => {

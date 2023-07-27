@@ -6,33 +6,12 @@ import Row from "../components/Row/Row";
 import request from "../config/Request";
 
 const Home = () => {
+
   return (
     <div className='App'>
-      {/* Navbar */}
       <Nav />
-      {/* Banner */}
       <Banner />
-
-      {/* Rows */}
-      <Row
-        title='Originaux Netfilx'
-        fetchUrl={request.fetchNetflixOrignals}
-        isPoster={true}
-      />
-      <Row title='Tendances actuelles' fetchUrl={request.fetchTrending} />
-      <Row title='Les mieux notés' fetchUrl={request.fetchTopRated} />
-      <Row title='Action' fetchUrl={request.fetchTActionMovies} />
-      <Row title='Horreur' fetchUrl={request.fetchTHorrorMovies} />
-      <Row title='Comédie' fetchUrl={request.fetchTComedyMovies} />
-      <Row title='Romance' fetchUrl={request.fetchTRomanceMovies} />
-      <Row title='Familial' fetchUrl={request.fetchMusique} />
-      <Row title='Thriller' fetchUrl={request.fetchTDocumentaries} />
-
-      {/* Video */}
-
-      {/* Quick view */}
-
-      {/* Footer */}
+      { request.map( ( { title, genreUrl, isPoster }, key ) => <Row key={key} title={ title } fetchUrl = {genreUrl} isPoster={isPoster} /> )}
       <Footer />
     </div>
   );
