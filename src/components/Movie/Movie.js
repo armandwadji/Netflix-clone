@@ -27,13 +27,13 @@ const Movie = ( { movie, isPoster } ) => {
 
   return (
     <>
-        <div className='movie' onMouseLeave={ _ => setPopup( false ) } >
+        <div className='movie' onMouseLeave={ _ => setPopup( false ) }>
           <div className='description' onClick={ _ => setPopup(!popup) }>
             { movie.backdrop_path && movie.poster_path && (
               
             <figure className={ Math.random() > 0.5 ? "row__images--image" : "" } style={ { visibility: popup ? 'hidden' : 'visible' } }>
               <img
-                src={ !showCart ? './images/skeleton.png' : `https://image.tmdb.org/t/p/original/${isPoster ? movie?.poster_path : movie?.backdrop_path}` }
+                src={ !showCart ? './images/skeleton.webp' : `https://image.tmdb.org/t/p/original/${isPoster ? movie?.poster_path : movie?.backdrop_path}` }
                 alt={ movie?.title || movie?.original_title || movie?.name || movie?.original_name }
                 style={{opacity: !showCart ? 0.3 : 1}}
                 ref={ movieRef } 
@@ -43,14 +43,11 @@ const Movie = ( { movie, isPoster } ) => {
 
             <div className='row__images--description'>
               <h3>{movie?.title || movie?.original_title || movie?.name}</h3>
-
-                <h5>Sortie : {formatDate(movie?.first_air_date || movie.release_date)}</h5>
-
-                <ul>
-                  {genreFinder(movie?.genre_ids)?.map( genre =>  <li key={genre}>{genre}</li>  )}
-                </ul>
-
-                <p>{movie?.overview}</p>
+              <h5>Sortie : {formatDate(movie?.first_air_date || movie.release_date)}</h5>
+              <ul>
+                {genreFinder(movie?.genre_ids)?.map( genre =>  <li key={genre}>{genre}</li>  )}
+              </ul>
+              <p>{movie?.overview}</p>
             </div>
           </div>
           <Video movie={movie} popup={popup} />

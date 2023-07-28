@@ -44,10 +44,10 @@ const Banner = () => {
               {movie?.overview}
             </p>
             <div className='bannerContent__buttons'>
-              <button className='bannerContent__buttons--button'>
+              <button className='bannerContent__buttons--button' onClick={ _ => setPopup(!popup)}>
                 <PlayArrowIcon /> Lecture
               </button>
-              <button className='bannerContent__buttons--button' onClick={ _ => setPopup(!popup)}>
+              <button className='bannerContent__buttons--button'>
                 <HelpOutlineIcon /> Plus d'infos
               </button>
             </div>
