@@ -44,7 +44,7 @@ const Row = ( { title, fetchUrl, isPoster } ) => {
     <div className='row' ref={rowRef}>
       <h2 className='row__title'>{title}</h2>
       <div className='row__images'>
-        { movies?.map( (movie, key) => <Movie key={ key } movie={ movie } isPoster={ isPoster } /> ) }
+        { movies?.map( ( movie ) => <Movie key={ movie.id } movie={ movie } isPoster={ isPoster } /> ) }
         <div className="paginate" ref={scrollRef}>Loading...</div>
       </div>
     </div>
