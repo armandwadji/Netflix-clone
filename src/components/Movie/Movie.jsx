@@ -11,7 +11,7 @@ const Movie = ( { movie, isPoster } ) => {
   const options = {
     root: null,
     rootMargin: "50px",
-    threshold: 1.0,
+    threshold: 0.5,
   };
 
   const callbackfunction = async (entries) => {
