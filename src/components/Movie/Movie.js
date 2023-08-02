@@ -35,7 +35,7 @@ const Movie = ( { movie, isPoster } ) => {
               <img
                 src={ !showCart ? './images/skeleton.webp' : `https://image.tmdb.org/t/p/original/${isPoster ? movie?.poster_path : movie?.backdrop_path}` }
                 alt={ movie?.title || movie?.original_title || movie?.name || movie?.original_name }
-                style={{opacity: !showCart ? 0.3 : 1}}
+                style={ { opacity: ( !showCart ? 0.3 : 1 ), height: !isPoster ? "170px" : "450px"  }}
                 ref={ movieRef } 
               />
               </figure>

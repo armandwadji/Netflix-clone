@@ -4,8 +4,13 @@
   transition: visibility 0.5s ease-in-out;
 
   &__title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     padding: 0 0.5rem;
+    padding-inline-start: 1rem;
+
+    @media screen and (max-width: 768px) {
+      font-size: 1.5rem;
+    }
   }
 
   &__images {
